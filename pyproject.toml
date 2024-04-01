@@ -1,3 +1,4 @@
+#TODO ADD a cli script to entry point e.g. cli-todo=cli_todo:main
 [tool.poetry]
 name = "cli-todo"
 version = "0.1.0"
