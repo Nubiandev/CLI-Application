@@ -1,10 +1,5 @@
 import click
 
-@click.group
-def mycommands():
-    pass
-
-
 @click.command()
 @click.option("--name" , prompt="Enter your name" , help="The name of the user")
 def hello (name):
@@ -17,21 +12,16 @@ PRIORITIES = {
     "h": "High" 
     }
 
-
-
 @click.command()
 @click.argument("todofile" , type=click.Path(exists=False), required=0)
 @click.option("-n" , "--name" , prompt="Enter the todo name", help="The name of the todo")
 @click.option("-d" , "--description" , prompt="Describe the todo", help="Description of the todo")
 @click.option("-p" , "--priority" , type=click.Choice(PRIORITIES.keys()), default="m")
 
-
-
 def add_todo(name, description, priority, todofile):
     filename = todofile if todofile is not None else "mytodos.txt"
     with open(filename, "a+") as f:
         f.write(f"[{name}]: {description} [Priority: {PRIORITIES[priority]}]")
-
 
 @click.command()
 @click.argument("idx", type=int, required=1)
@@ -58,19 +48,3 @@ def list_todo(priority, todofile):
     
                 if f"Priority: {PRIORITIES[priority]}]" in todo:
                     print(f"({idx})  - {todo}")
-
-
-
-
-
-mycommands.add_command(hello)
-mycommands.add_command(add_todo)
-mycommands.add_command(delete_todo)
-mycommands.add_command(list_todo)
-
-
-
-if __name__ == "__main__":
-    mycommands()
-
-

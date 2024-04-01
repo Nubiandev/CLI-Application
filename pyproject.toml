@@ -1,10 +1,12 @@
-#TODO ADD a cli script to entry point e.g. cli-todo=cli_todo:main
 [tool.poetry]
 name = "cli-todo"
 version = "0.1.0"
 description = "My first application"
 authors = ["Erica Smith <NubianDev2.0.com>"]
 readme = "README.md"
+
+[tool.poetry.scripts]
+nubian = "cli_todo:nubian"
 
 [tool.poetry.dependencies]
 python = "^3.10"
